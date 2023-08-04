@@ -11,11 +11,12 @@ type WaveConfig = NonNullable<ConfigProviderProps>['wave'];
 type ShowEffect = NonNullable<WaveConfig>['showEffect'];
 
 export interface HappyProviderProps {
+  disabled?: boolean;
   children?: React.ReactNode;
 }
 
 export default function HappyProvider(props: HappyProviderProps) {
-  const { children } = props;
+  const { children, disabled } = props;
 
   const showEffect = useEvent<ShowEffect>((target, info) => {
     const { token, hashId } = info;
@@ -42,5 +43,15 @@ export default function HappyProvider(props: HappyProviderProps) {
     );
   });
 
-  return <ConfigProvider wave={{ showEffect }}>{children}</ConfigProvider>;
+  const waveConfig = React.useMemo(() => {
+    if (disabled) {
+      return {};
+    }
+
+    return {
+      showEffect,
+    };
+  }, [disabled]);
+
+  return <ConfigProvider wave={waveConfig}>{children}</ConfigProvider>;
 }

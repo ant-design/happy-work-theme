@@ -4,6 +4,7 @@ import {
   Button,
   Checkbox,
   ConfigProvider,
+  Divider,
   Radio,
   Space,
   Switch,
@@ -19,6 +20,7 @@ const COLORS = {
 };
 
 const Demo = () => {
+  const [disabled, setDisabled] = React.useState<boolean>(false);
   const [theme, setTheme] = React.useState<string>('default');
 
   const token: Record<string, string> = {};
@@ -29,50 +31,59 @@ const Demo = () => {
   }
 
   return (
-    <ConfigProvider
-      theme={{
-        token,
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          paddingBlock: 32,
-          rowGap: 32,
+    <>
+      <Switch
+        checkedChildren="Enabled"
+        unCheckedChildren="Disable"
+        checked={!disabled}
+        onChange={() => setDisabled((d) => !d)}
+      />
+      <Divider />
+      <ConfigProvider
+        theme={{
+          token,
         }}
       >
-        <HappyProvider>
-          <Radio.Group
-            value={theme}
-            onChange={(e) => setTheme(e.target.value)}
-            options={['default', 'lark', 'aliyun']}
-          />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            paddingBlock: 32,
+            rowGap: 32,
+          }}
+        >
+          <HappyProvider disabled={disabled}>
+            <Radio.Group
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
+              options={['default', 'lark', 'aliyun']}
+            />
 
-          <Space>
-            <Button type="primary">Primary</Button>
-            <Button>Default</Button>
-            <Button type="dashed">Dashed</Button>
-            <Button type="primary" danger>
-              Danger Not Happy
-            </Button>
-            <Button type="text">Text Not Happy</Button>
-            <Button type="link">Link Not Happy</Button>
-          </Space>
-          <Space>
-            <Switch checkedChildren="So Happy" unCheckedChildren="So Happy" />
-            <Tag onClick={() => {}}>Tag</Tag>
-          </Space>
+            <Space>
+              <Button type="primary">Primary</Button>
+              <Button>Default</Button>
+              <Button type="dashed">Dashed</Button>
+              <Button type="primary" danger>
+                Danger Not Happy
+              </Button>
+              <Button type="text">Text Not Happy</Button>
+              <Button type="link">Link Not Happy</Button>
+            </Space>
+            <Space>
+              <Switch checkedChildren="So Happy" unCheckedChildren="So Happy" />
+              <Tag onClick={() => {}}>Tag</Tag>
+            </Space>
 
-          <Checkbox.Group
-            options={new Array(3)
-              .fill(null)
-              .map((_, index) => `option-${index}`)}
-          />
-        </HappyProvider>
-      </div>
-    </ConfigProvider>
+            <Checkbox.Group
+              options={new Array(3)
+                .fill(null)
+                .map((_, index) => `option-${index}`)}
+            />
+          </HappyProvider>
+        </div>
+      </ConfigProvider>
+    </>
   );
 };
 
