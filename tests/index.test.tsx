@@ -12,6 +12,7 @@ describe('HappyWork', () => {
   });
 
   beforeEach(() => {
+    document.body.innerHTML = '';
     jest.useFakeTimers();
   });
 
@@ -41,8 +42,22 @@ describe('HappyWork', () => {
     fireEvent.click(container.querySelector('button')!);
     waitEffect();
 
-    console.log(container.innerHTML);
-
     expect(document.body.querySelector('.happy-wave')).toBeTruthy();
+  });
+
+  it('disabled', () => {
+    const onClick = jest.fn();
+
+    const { container } = render(
+      <HappyProvider disabled>
+        <Button onClick={onClick} />
+      </HappyProvider>,
+    );
+
+    // Click to show
+    fireEvent.click(container.querySelector('button')!);
+    waitEffect();
+
+    expect(document.body.querySelector('.happy-wave')).toBeFalsy();
   });
 });
