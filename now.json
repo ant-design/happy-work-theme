@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "rc-trigger",
+  "name": "@ant-design/happy-work-theme",
   "builds": [
     {
       "src": "package.json",

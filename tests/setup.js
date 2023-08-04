@@ -1,3 +1,5 @@
-// jsdom add motion events to test CSSMotion
-window.AnimationEvent = window.AnimationEvent || (() => {});
-window.TransitionEvent = window.TransitionEvent || (() => {});
+window.requestAnimationFrame = setTimeout;
+window.cancelAnimationFrame = clearTimeout;
+
+global.requestAnimationFrame = global.setTimeout;
+global.cancelAnimationFrame = global.clearTimeout;

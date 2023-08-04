@@ -10,7 +10,7 @@ import {
   Tag,
 } from 'antd';
 import React from 'react';
-import HappyProvider from '../../src/HappyProvider';
+import { HappyProvider } from '../../src';
 
 const COLORS = {
   default: undefined,

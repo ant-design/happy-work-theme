@@ -11,7 +11,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@@/*": [".dumi/tmp/*"],
-      "rc-trigger": ["src/index.tsx"]
+      "@ant-design/happy-work-theme": ["src/index.tsx"]
     }
   }
 }

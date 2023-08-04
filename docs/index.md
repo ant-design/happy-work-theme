@@ -1,7 +1,7 @@
 ---
 hero:
-  title: rc-trigger
-  description: React Trigger Component
+  title: 🏖️ Happy Work
+  description: Ant Design Happy Work Theme
 ---
 
 <embed src="../README.md"></embed>

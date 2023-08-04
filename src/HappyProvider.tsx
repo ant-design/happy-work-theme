@@ -1,4 +1,3 @@
-import hash from '@emotion/hash';
 import { ConfigProvider } from 'antd';
 import useEvent from 'rc-util/lib/hooks/useEvent';
 import { render, unmount } from 'rc-util/lib/React/render';
@@ -19,13 +18,7 @@ export default function HappyProvider(props: HappyProviderProps) {
   const { children } = props;
 
   const showEffect = useEvent<ShowEffect>((target, info) => {
-    const { token, component } = info;
-
-    console.log('component:', component);
-
-    // HashId
-    const str = JSON.stringify(token);
-    const hashId = `wave-${hash(str)}`;
+    const { token, hashId } = info;
 
     // Create holder
     const holder = document.createElement('div');
