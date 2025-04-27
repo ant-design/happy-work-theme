@@ -11,10 +11,7 @@ type RenderType = (
 ) => UnmountType;
 
 const can_be_used_with_dep = () => {
-  const { version } = antd;
-  const [major, minor, patch] = (
-    typeof version === 'string' ? version : '0.0.0'
-  )
+  const [major, minor, patch] = antd.version
     .split('.')
     .map((v) => parseInt(v, 10));
 
@@ -26,7 +23,7 @@ const isCompatible = can_be_used_with_dep();
 
 const defaultReactRender: RenderType = (node, container) => {
   if (isCompatible) {
-    return (antd.ConfigProvider as any).__getReactRender()(node, container);
+    return (antd as any).unstableSetRender()(node, container);
   } else if (process.env.NODE_ENV !== 'production') {
     const majorVersion = parseInt(React.version.split('.')[0], 10);
     const fullKeys = Object.keys(ReactDOM);
