@@ -45,9 +45,25 @@ let unstableRender: RenderType = defaultReactRender;
  * @deprecated Set React render function for compatible usage.
  * This is internal usage only compatible with React 19.
  * And will be removed in next major version.
+ * Use only when `antd` version is lower than 5.24.9
  */
-export function unstableSetRender(render: RenderType) {
-  unstableRender = render;
+export function unstableSetRender(render?: RenderType) {
+  if (render) {
+    unstableRender = render;
+
+    if (process.env.NODE_ENV !== 'production') {
+      warningOnce(
+        !isCompatible,
+        [
+          `[happy-work-theme] Please use \`import @ant-design/v5-patch-for-react-19\` instead`,
+          `This method is only used when the antd version is lower than \`5.24.9\`, currently version is \`${antd.version}\``,
+          `Read more at https://u.ant.design/v5-for-19, https://github.com/ant-design/happy-work-theme/pull/48`,
+        ].join('\n'),
+      );
+    }
+  }
+
+  return unstableRender;
 }
 
 export function getReactRender() {
