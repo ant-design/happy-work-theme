@@ -1,8 +1,8 @@
 import { ConfigProvider } from 'antd';
 import useEvent from 'rc-util/lib/hooks/useEvent';
-import { render, unmount } from 'rc-util/lib/React/render';
 import * as React from 'react';
 import DotEffect from './DotEffect';
+import { getReactRender } from './_utils/unstable-render';
 
 type ConfigProviderProps = Parameters<typeof ConfigProvider>[0];
 
@@ -18,6 +18,8 @@ export interface HappyProviderProps {
 export default function HappyProvider(props: HappyProviderProps) {
   const { children, disabled } = props;
 
+  const [reactRender] = React.useState(getReactRender);
+
   const showEffect = useEvent<ShowEffect>((target, info) => {
     const { token, hashId } = info;
 
@@ -28,13 +30,13 @@ export default function HappyProvider(props: HappyProviderProps) {
     holder.style.top = `0px`;
     document.body.appendChild(holder);
 
-    render(
+    const unmount = reactRender(
       <DotEffect
         target={target}
         token={token}
         hashId={hashId}
         onFinish={() => {
-          unmount(holder).then(() => {
+          unmount().then(() => {
             holder.parentElement?.removeChild(holder);
           });
         }}
