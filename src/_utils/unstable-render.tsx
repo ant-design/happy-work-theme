@@ -49,18 +49,8 @@ let unstableRender: RenderType = defaultReactRender;
  */
 export function unstableSetRender(render?: RenderType) {
   if (isCompatible) {
+    // 5.22.6 ~ 5.24.8 `unstableSetRender` 必填 render 参数.
     unstableRender = (antd as any).unstableSetRender();
-
-    if (process.env.NODE_ENV !== 'production') {
-      warningOnce(
-        !!render,
-        [
-          `[happy-work-theme] Please use \`import @ant-design/v5-patch-for-react-19\` instead`,
-          `This method is only used when the antd version is lower than \`5.24.9\`, currently version is \`${antd.version}\``,
-          `Read more at https://u.ant.design/v5-for-19, https://github.com/ant-design/happy-work-theme/pull/48`,
-        ].join('\n'),
-      );
-    }
   } else if (render) {
     unstableRender = render;
   }
