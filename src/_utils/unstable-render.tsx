@@ -1,5 +1,5 @@
 import * as antd from 'antd';
-import { render, unmount } from 'rc-util/lib/React/render';
+import { render as defaultRender, unmount } from 'rc-util/lib/React/render';
 import warningOnce from 'rc-util/lib/warning';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -35,7 +35,7 @@ const defaultReactRender: RenderType = (node, container) => {
     );
   }
 
-  render(node, container);
+  defaultRender(node, container);
   return () => unmount(container);
 };
 
