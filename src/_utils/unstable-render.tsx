@@ -48,12 +48,12 @@ let unstableRender: RenderType = defaultReactRender;
  * Use only when `antd` version is lower than 5.24.9
  */
 export function unstableSetRender(render?: RenderType) {
-  if (render) {
-    unstableRender = render;
+  if (isCompatible) {
+    unstableRender = (antd as any).unstableSetRender();
 
     if (process.env.NODE_ENV !== 'production') {
       warningOnce(
-        !isCompatible,
+        !!render,
         [
           `[happy-work-theme] Please use \`import @ant-design/v5-patch-for-react-19\` instead`,
           `This method is only used when the antd version is lower than \`5.24.9\`, currently version is \`${antd.version}\``,
@@ -61,11 +61,9 @@ export function unstableSetRender(render?: RenderType) {
         ].join('\n'),
       );
     }
+  } else if (render) {
+    unstableRender = render;
   }
 
-  return unstableRender;
-}
-
-export function getReactRender() {
   return unstableRender;
 }

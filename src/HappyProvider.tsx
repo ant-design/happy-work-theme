@@ -2,7 +2,7 @@ import { ConfigProvider } from 'antd';
 import useEvent from 'rc-util/lib/hooks/useEvent';
 import * as React from 'react';
 import DotEffect from './DotEffect';
-import { getReactRender } from './_utils/unstable-render';
+import { unstableSetRender } from './_utils/unstable-render';
 
 type ConfigProviderProps = Parameters<typeof ConfigProvider>[0];
 
@@ -18,7 +18,7 @@ export interface HappyProviderProps {
 export default function HappyProvider(props: HappyProviderProps) {
   const { children, disabled } = props;
 
-  const [reactRender] = React.useState(getReactRender);
+  const [reactRender] = React.useState(unstableSetRender);
 
   const showEffect = useEvent<ShowEffect>((target, info) => {
     const { token, hashId } = info;
