@@ -59,3 +59,6 @@ export function unstableSetRender(render?: RenderType) {
 
   return unstableRender;
 }
+
+/** @private Test usage. Not work in prod */
+export const _can = can_be_used_with_dep;
