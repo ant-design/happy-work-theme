@@ -21,7 +21,7 @@ const can_be_used_with_dep = () => {
 
 const isCompatible = can_be_used_with_dep();
 
-const defaultReactRender: RenderType = (node, container) => {
+export const unstableRender: RenderType = (node, container) => {
   if (isCompatible) {
     return (antd as any).unstableSetRender()(node, container);
   }
@@ -41,24 +41,5 @@ const defaultReactRender: RenderType = (node, container) => {
   return () => unmount(container);
 };
 
-let unstableRender: RenderType = defaultReactRender;
-
-/**
- * @deprecated Set React render function for compatible usage.
- * This is internal usage only compatible with React 19.
- * And will be removed in next major version.
- * Use only when `antd` version is lower than 5.24.9
- */
-export function unstableSetRender(render?: RenderType) {
-  if (isCompatible) {
-    // 5.22.6 ~ 5.24.8 `unstableSetRender` 必填 render 参数.
-    unstableRender = (antd as any).unstableSetRender();
-  } else if (render) {
-    unstableRender = render;
-  }
-
-  return unstableRender;
-}
-
-/** @private Test usage. Not work in prod */
+/** @internal Test usage. Not work in prod */
 export const _can = can_be_used_with_dep;
