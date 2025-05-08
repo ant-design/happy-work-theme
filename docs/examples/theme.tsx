@@ -9,8 +9,9 @@ import {
   Space,
   Switch,
   Tag,
+  version
 } from 'antd';
-import React from 'react';
+import * as React from 'react';
 import { HappyProvider } from '../../src';
 
 const COLORS = {
@@ -53,6 +54,10 @@ const Demo = () => {
             rowGap: 32,
           }}
         >
+          <ul>
+            <li>React v{React.version}</li>
+            <li>antd v{version}</li>
+          </ul>
           <HappyProvider disabled={disabled}>
             <Radio.Group
               value={theme}
