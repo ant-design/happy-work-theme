@@ -18,6 +18,7 @@ export interface HappyProviderProps {
 export default function HappyProvider(props: HappyProviderProps) {
   const { children, disabled } = props;
 
+  // Using useState's lazy initialization to ensure unstableSetRender executes only once
   const [reactRender] = React.useState(unstableSetRender);
 
   const showEffect = useEvent<ShowEffect>((target, info) => {
