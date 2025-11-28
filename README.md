@@ -9,10 +9,10 @@ Ant Design Happy Work Theme
 [![bundle size][bundlephobia-image]][bundlephobia-url]
 [![dumi][dumi-image]][dumi-url]
 
-[npm-image]: http://img.shields.io/npm/v/@ant-design/happy-work-theme.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/@ant-design/happy-work-theme
-[github-actions-image]: https://github.com/react-component/checkbox/workflows/CI/badge.svg
-[github-actions-url]: https://github.com/react-component/checkbox/actions
+[npm-image]: https://img.shields.io/npm/v/@ant-design/happy-work-theme.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@ant-design/happy-work-theme
+[github-actions-image]: https://github.com/ant-design/happy-work-theme/actions/workflows/main.yml/badge.svg
+[github-actions-url]: https://github.com/ant-design/happy-work-theme/actions/workflows/main.yml
 [codecov-image]: https://img.shields.io/codecov/c/github/react-component/checkbox/master.svg?style=flat-square
 [codecov-url]: https://codecov.io/gh/react-component/checkbox/branch/master
 [david-url]: https://david-dm.org/react-component/checkbox
