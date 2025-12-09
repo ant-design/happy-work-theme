@@ -44,17 +44,14 @@ const HappyProvider: React.FC<React.PropsWithChildren<HappyProviderProps>> = (
     );
   });
 
-  const waveConfig = React.useMemo(() => {
+  const memoizedWaveConfig = React.useMemo<WaveConfig>(() => {
     if (disabled) {
       return {};
     }
-
-    return {
-      showEffect,
-    };
+    return { showEffect };
   }, [disabled]);
 
-  return <ConfigProvider wave={waveConfig}>{children}</ConfigProvider>;
+  return <ConfigProvider wave={memoizedWaveConfig}>{children}</ConfigProvider>;
 };
 
 export default HappyProvider;
