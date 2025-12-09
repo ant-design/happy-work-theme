@@ -1,4 +1,4 @@
-import { TinyColor } from '@ctrl/tinycolor';
+import { FastColor } from '@ant-design/fast-color';
 import type { GlobalToken } from 'antd';
 import { clsx } from 'clsx';
 import { CSSMotionList } from '@rc-component/motion';
@@ -96,9 +96,9 @@ export default function DotEffect({
 
         // Color
         const { colorPrimary } = token;
-        const colorHsv = new TinyColor(colorPrimary).toHsv();
+        const colorHsv = new FastColor(colorPrimary).toHsv();
         colorHsv.h -= 30;
-        const colorPrimaryWeak = new TinyColor(colorHsv).toHexString();
+        const colorPrimaryWeak = new FastColor(colorHsv).toHexString();
 
         setDots(
           new Array(dotCount).fill(null).map((_, index) => {

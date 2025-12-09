@@ -36,9 +36,9 @@
     "test": "rc-test --no-cache"
   },
   "dependencies": {
-    "@ant-design/cssinjs": "^1.16.1",
+    "@ant-design/cssinjs": "^2.0.1",
+    "@ant-design/fast-color": "^3.0.0",
     "@babel/runtime": "^7.18.3",
-    "@ctrl/tinycolor": "^3.6.0",
     "@rc-component/motion": "^1.1.6",
     "@rc-component/util": "^1.5.0",
     "clsx": "^2.1.1"
@@ -65,8 +65,9 @@
     "typescript": "^4.0.0"
   },
   "peerDependencies": {
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "antd": ">=6.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "engines": {
     "node": ">=8.x"
