@@ -39,19 +39,19 @@
     "@ant-design/cssinjs": "^1.16.1",
     "@babel/runtime": "^7.18.3",
     "@ctrl/tinycolor": "^3.6.0",
-    "classnames": "^2.3.2",
-    "rc-motion": "^2.7.3",
-    "rc-util": "^5.33.0"
+    "@rc-component/motion": "^1.1.6",
+    "@rc-component/util": "^1.5.0",
+    "antd": "^6.1.0",
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@rc-component/father-plugin": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.0",
-    "@types/classnames": "^2.2.10",
     "@types/jest": "^26.0.15",
+    "@types/node": "^24.10.2",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "antd": "^5.8.2",
     "cross-env": "^7.0.1",
     "dumi": "^2.1.0",
     "eslint": "^8.56.0",
@@ -65,7 +65,6 @@
     "typescript": "^4.0.0"
   },
   "peerDependencies": {
-    "antd": ">= 5.8.2",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },

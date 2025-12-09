@@ -1,8 +1,8 @@
 import { TinyColor } from '@ctrl/tinycolor';
 import type { GlobalToken } from 'antd';
-import classNames from 'classnames';
-import { CSSMotionList } from 'rc-motion';
-import raf from 'rc-util/lib/raf';
+import { clsx } from 'clsx';
+import { CSSMotionList } from '@rc-component/motion';
+import raf from '@rc-component/util/lib/raf';
 import * as React from 'react';
 import useStyle, { TARGET_ATTR } from './style';
 
@@ -200,13 +200,7 @@ export default function DotEffect({
   }
 
   return (
-    <div
-      className={classNames(prefixCls, hashId)}
-      style={{
-        left,
-        top,
-      }}
-    >
+    <div className={clsx(prefixCls, hashId)} style={{ left, top }}>
       <CSSMotionList
         component={false}
         keys={dots}
@@ -228,7 +222,7 @@ export default function DotEffect({
         }) => {
           const name = `${dotPrefixCls}-${key}`;
 
-          const dotCls = classNames(dotPrefixCls, motionCls, name);
+          const dotCls = clsx(dotPrefixCls, motionCls, name);
 
           // if (dotCls.includes('active')) {
           //   debugger;
@@ -249,13 +243,7 @@ export default function DotEffect({
           }
 
           return (
-            <div
-              className={dotCls}
-              style={{
-                ...motionStyle,
-                ...dotStyle,
-              }}
-            />
+            <div className={dotCls} style={{ ...motionStyle, ...dotStyle }} />
           );
         }}
       </CSSMotionList>

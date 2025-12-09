@@ -1,8 +1,8 @@
 import { ConfigProvider } from 'antd';
-import useEvent from 'rc-util/lib/hooks/useEvent';
+import useEvent from '@rc-component/util/lib/hooks/useEvent';
 import * as React from 'react';
 import DotEffect from './DotEffect';
-import { unstableRender } from './_utils/unstable-render';
+import { render, unmount } from '@rc-component/util/lib/React/render';
 
 type ConfigProviderProps = Parameters<typeof ConfigProvider>[0];
 
@@ -12,10 +12,11 @@ type ShowEffect = NonNullable<WaveConfig>['showEffect'];
 
 export interface HappyProviderProps {
   disabled?: boolean;
-  children?: React.ReactNode;
 }
 
-export default function HappyProvider(props: HappyProviderProps) {
+const HappyProvider: React.FC<React.PropsWithChildren<HappyProviderProps>> = (
+  props,
+) => {
   const { children, disabled } = props;
 
   const showEffect = useEvent<ShowEffect>((target, info) => {
@@ -28,14 +29,14 @@ export default function HappyProvider(props: HappyProviderProps) {
     holder.style.top = `0px`;
     document.body.appendChild(holder);
 
-    const unmount = unstableRender(
+    render(
       <DotEffect
         target={target}
         token={token}
         hashId={hashId}
         onFinish={() => {
-          unmount().then(() => {
-            holder.parentElement?.removeChild(holder);
+          unmount(holder).then(() => {
+            holder.remove();
           });
         }}
       />,
@@ -54,4 +55,6 @@ export default function HappyProvider(props: HappyProviderProps) {
   }, [disabled]);
 
   return <ConfigProvider wave={waveConfig}>{children}</ConfigProvider>;
-}
+};
+
+export default HappyProvider;
