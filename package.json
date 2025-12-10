@@ -36,7 +36,7 @@
     "test": "rc-test --no-cache"
   },
   "dependencies": {
-    "@ant-design/cssinjs": "^1.16.1",
+    "@ant-design/cssinjs": "^2.0.1",
     "@babel/runtime": "^7.18.3",
     "@ctrl/tinycolor": "^3.6.0",
     "classnames": "^2.3.2",
