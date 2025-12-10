@@ -65,7 +65,7 @@
     "typescript": "^4.0.0"
   },
   "peerDependencies": {
-    "antd": ">=6.0.0",
+    "antd": ">=6.1.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
