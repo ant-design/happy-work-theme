@@ -62,7 +62,7 @@
     "react": "^18",
     "react-dom": "^18",
     "regenerator-runtime": "^0.13.7",
-    "typescript": "^4.0.0"
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
     "antd": ">=6.1.0",
