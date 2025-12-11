@@ -9,7 +9,7 @@ import {
   Space,
   Switch,
   Tag,
-  version
+  version,
 } from 'antd';
 import * as React from 'react';
 import { HappyProvider } from '../../src';
@@ -20,11 +20,20 @@ const COLORS = {
   aliyun: '#ff6a00',
 };
 
-const Demo = () => {
+const style: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  paddingBlock: 32,
+  rowGap: 32,
+};
+
+const Demo: React.FC = () => {
   const [disabled, setDisabled] = React.useState<boolean>(false);
   const [theme, setTheme] = React.useState<string>('default');
 
   const token: Record<string, string> = {};
+
   const themeColor = COLORS[theme];
 
   if (themeColor) {
@@ -40,20 +49,8 @@ const Demo = () => {
         onChange={() => setDisabled((d) => !d)}
       />
       <Divider />
-      <ConfigProvider
-        theme={{
-          token,
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            paddingBlock: 32,
-            rowGap: 32,
-          }}
-        >
+      <ConfigProvider theme={{ token }}>
+        <div style={style}>
           <ul>
             <li>React v{React.version}</li>
             <li>antd v{version}</li>
@@ -64,7 +61,6 @@ const Demo = () => {
               onChange={(e) => setTheme(e.target.value)}
               options={['default', 'lark', 'aliyun']}
             />
-
             <Space>
               <Button type="primary">Primary</Button>
               <Button>Default</Button>
@@ -77,9 +73,15 @@ const Demo = () => {
             </Space>
             <Space>
               <Switch checkedChildren="So Happy" unCheckedChildren="So Happy" />
-              <Tag onClick={() => {}}>Tag</Tag>
+              <Tag
+                variant="outlined"
+                color="blue"
+                style={{ userSelect: 'none' }}
+                onClick={() => {}}
+              >
+                Tag
+              </Tag>
             </Space>
-
             <Checkbox.Group
               options={new Array(3)
                 .fill(null)

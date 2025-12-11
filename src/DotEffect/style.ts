@@ -53,22 +53,11 @@ const antWaveDotEffect = new Keyframes('antWaveDotEffect', {
   },
 });
 
-export default function useStyle(
-  prefixCls: string,
-  hashId: string,
-  token: GlobalToken,
-) {
-  const sharedConfig = {
-    theme: DEFAULT_THEME,
-    token,
-    // nonce: () => csp?.nonce!,
-  };
+const useStyle = (prefixCls: string, hashId: string, token: GlobalToken) => {
+  const sharedConfig = { theme: DEFAULT_THEME, token };
 
   useStyleRegister(
-    {
-      ...sharedConfig,
-      path: ['HappyWorkTheme', 'target'],
-    },
+    { ...sharedConfig, path: ['HappyWorkTheme', 'target'] },
     () => ({
       // ======================== Target ========================
       [`[${TARGET_ATTR}-${hashId}], & [${TARGET_ATTR}-${hashId}]`]: {
@@ -81,31 +70,26 @@ export default function useStyle(
   );
 
   useStyleRegister(
-    {
-      ...sharedConfig,
-      hashId,
-      path: ['HappyWorkTheme', 'effect'],
-    },
+    { ...sharedConfig, hashId, path: ['HappyWorkTheme', 'effect'] },
     () => {
       const dotPrefixCls = `.${prefixCls}`;
-
       return [
         {
           // ========================= Dots =========================
           [dotPrefixCls]: {
             position: 'fixed',
             pointerEvents: 'none',
-            zIndex: 999,
+            zIndex: 999999,
 
             [`${dotPrefixCls}-dot`]: {
               boxSizing: 'border-box',
               position: 'absolute',
               borderRadius: '100%',
               opacity: 0,
-              transform: 'translate(-50%, -50%)',
+              transform: 'translate3d(-50%, -50%, 0)',
 
               // Start Position
-              zIndex: 999,
+              zIndex: 999999,
 
               // =================== Basic Motion ===================
               '&.happy-in-out': {
@@ -121,4 +105,6 @@ export default function useStyle(
       ];
     },
   );
-}
+};
+
+export default useStyle;

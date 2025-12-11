@@ -1,6 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react';
 import { Button } from 'antd';
-import { spyElementPrototype } from 'rc-util/lib/test/domHook';
+import { spyElementPrototype } from '@rc-component/util/lib/test/domHook';
 import * as React from 'react';
 import { HappyProvider } from '../src';
 
